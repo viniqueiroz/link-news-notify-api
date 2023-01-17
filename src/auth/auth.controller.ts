@@ -12,7 +12,7 @@ import { User } from 'src/user/user.entity';
 import { UserService } from 'src/user/user.service';
 import { AuthService } from './auth.service';
 
-@Controller()
+@Controller({ version: '1' })
 export class AuthController {
   constructor(
     private readonly authService: AuthService,

@@ -1,4 +1,9 @@
 import { Injectable, Logger, NotFoundException } from '@nestjs/common';
+import {
+  ConflictException,
+  HttpException,
+  UnauthorizedException,
+} from '@nestjs/common/exceptions';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DataSource, Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -55,14 +60,13 @@ export class UserService {
       /**
        * Perform all needed checks
        */
-      console.log(createuserDto);
-
       const user = await this.usersRepository.create(createuserDto);
       await this.usersRepository.save(user);
       Logger.log('createUser - Created user');
       return user;
     } catch (e) {
       Logger.log(e);
+      console.log(e);
       throw e;
     }
   }
