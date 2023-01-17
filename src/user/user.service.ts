@@ -60,7 +60,10 @@ export class UserService {
       /**
        * Perform all needed checks
        */
+      console.log(createuserDto);
+
       const user = await this.usersRepository.create(createuserDto);
+      console.log(user);
       await this.usersRepository.save(user);
       Logger.log('createUser - Created user');
       return user;
